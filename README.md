@@ -1,0 +1,12 @@
+#parcel
+-dev build
+-local server
+-refreshing - HMR (HOT MODULE REPLACEMENT)
+-file watching algorithm - written in C++
+-catching - Faster bulid
+- Minification
+- image optimization
+- code splitting
+-Bundling
+- compress
+- differential Buiding - to support older browsers
