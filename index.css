@@ -39,3 +39,30 @@
 .search{
     padding:10px;
 }
+.shimmer-container{
+    margin-top: 20px;
+    display:flex;
+    flex-wrap: wrap;
+    gap:10px;
+
+}
+
+.shimmer-card{
+    width:200px;
+    height:400px;
+    padding:5px;
+    margin:5px;
+    background-color: #f0f0f0;
+}
+.shimmer-logo{
+    background-color: #f0f0f0;
+    animation:1s;
+
+}
+.shimmer-tag{
+    background-color: #f0f0f0;
+    animation:1s;
+
+
+}
+
