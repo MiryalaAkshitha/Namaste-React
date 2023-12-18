@@ -1,20 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { resList } from "../utils/mockData";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard,{Avaliability} from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [listofRestaurants, setListofRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-
+const AvaliabilityRestaurantCard = Avaliability(RestaurantCard)
   const [search, setSearch] = useState("");
-  
+  console.log(listofRestaurants,'listofRestaurants')
+  const {loggedInUser,setUserName} = useContext(UserContext)
   useEffect(() => {
     fetchData();
   }, []);
-
+//https://corsproxy.io/?
   const fetchData = async () => {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4491088&lng=78.3565045&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
@@ -38,14 +40,15 @@ const Body = () => {
   ) : (
     <>
       <div className="body">
-        <div className="filter">
-          <div className="search">
+        <div className="filter flex">
+          <div className="search m-4 p-4">
             <input
               type="text"
+              className="border border-solid border-black"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <button onClick={() => {
+            <button className ="px-4 py-1 bg-blue-100 m-4 rounded-lg"onClick={() => {
                 console.log("hello")
                 const filteredRestaurant = listofRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(search.toLowerCase())
@@ -61,23 +64,19 @@ const Body = () => {
                 }
                 >search</button>
           </div>
-          <button
-            className="filter-btn"
-            onClick={() => {
-              const filteredlist = listofRestaurants.filter(
-                (res) => res.info.avgRating > 4
-              );
-              setListofRestaurants(filteredlist);
-              console.log(filteredlist);
-            }}
-          >
-            Filter
-          </button>
+          <div className="search m-4 p-4">
+                    <label>User Name:</label>
+
+         <input value={loggedInUser} onChange ={(e)=>setUserName(e.target.value)}/>
+          </div>
+         
         </div>
-        <div className="res-container">
+        <div className="flex flex-wrap">
 
           {filteredRestaurants?.map((res) => (
-            <Link key={res.info.id} to ={"/restaurants/"+res.info.id}><RestaurantCard  resData={res} /></Link>
+            <Link key={res.info.id} to ={"/restaurants/"+res.info.id}>
+              {res.info.isOpen ?( <AvaliabilityRestaurantCard  resData={res} />) :(<RestaurantCard  resData={res} />)}
+              </Link>
           ))}
         </div>
       </div>
