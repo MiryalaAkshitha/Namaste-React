@@ -16,7 +16,7 @@ const AvaliabilityRestaurantCard = Avaliability(RestaurantCard)
   useEffect(() => {
     fetchData();
   }, []);
-//https://corsproxy.io/?
+// https://corsproxy.io/?
   const fetchData = async () => {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4491088&lng=78.3565045&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
@@ -24,10 +24,10 @@ const AvaliabilityRestaurantCard = Avaliability(RestaurantCard)
     const json = await data.json();
     console.log(json,'json');
     setListofRestaurants(
-      json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
+      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
     );
     setFilteredRestaurants(
-        json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
+        json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
       );
   };
   const onlineStatus = useOnlineStatus();
@@ -39,7 +39,7 @@ const AvaliabilityRestaurantCard = Avaliability(RestaurantCard)
     <Shimmer />
   ) : (
     <>
-      <div className="body">
+      <div className="body">  
         <div className="filter flex">
           <div className="search m-4 p-4">
             <input
@@ -65,9 +65,9 @@ const AvaliabilityRestaurantCard = Avaliability(RestaurantCard)
                 >search</button>
           </div>
           <div className="search m-4 p-4">
-                    <label>User Name:</label>
+                    {/* <label>User Name:</label> */}
 
-         <input value={loggedInUser} onChange ={(e)=>setUserName(e.target.value)}/>
+         {/* <input value={loggedInUser} onChange ={(e)=>setUserName(e.target.value)}/> */}
           </div>
          
         </div>

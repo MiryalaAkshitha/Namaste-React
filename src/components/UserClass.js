@@ -22,11 +22,13 @@ this.setState({
         const {name,location} = this.props;
         return(
             
-            <div className="user-card">
-                <img src={this.state.userInfo?.avatar_url}/>
-           <h2>Name :{this.state.userInfo.name}</h2>
-           <h3>Followers: {this.state.userInfo.followers}</h3>
-           <h4>Twitter :{this.state.userInfo.twitter_username}</h4>
+            <div className="user-card" style={{borderRadius:"0.5px",justifyContent:"center",alignItems:"center",height:"100vh",display:"flex",flexDirection:"column"}}>
+                <img src={this.state.userInfo?.avatar_url} height="300px" width="300px" borderRadius={"3px"}/>
+                <div>
+           <h2 className="">Name :  {this.state.userInfo.name}</h2>
+           <h3>Followers:   {this.state.userInfo.followers}</h3>
+           <h4>Twitter :  {this.state.userInfo.twitter_username}</h4>
+           </div>
 
 
             </div>

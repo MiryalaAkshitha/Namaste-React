@@ -4,7 +4,7 @@ const About =()=>{
     return (
         <>
         <h1> About</h1>
-        <UserClass name ={"aks"}/>
+        {/* <UserClass name ={"aks"}/> */}
         </>
     )
 }
