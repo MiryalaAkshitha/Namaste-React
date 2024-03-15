@@ -18,7 +18,7 @@ const AvaliabilityRestaurantCard = Avaliability(RestaurantCard)
   }, []);
 // https://corsproxy.io/?
   const fetchData = async () => {
-    const response =  await fetch(`https://swiggy-server.netlify.app/api/restaurants`)
+    const response =  await fetch(`https://swiggy-server.netlify.app/api/restaurants?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING`)
 
 const data = await response.json();
 console.log(data,'data')
