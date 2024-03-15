@@ -17,21 +17,37 @@ const AvaliabilityRestaurantCard = Avaliability(RestaurantCard)
     fetchData();
   }, []);
 // https://corsproxy.io/?
-  const fetchData = async () => {
-    const response =  await fetch(`https://swiggy-server.netlify.app/api/restaurants?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING`)
+//   const fetchData = async () => {
+//     const response =  await fetch(`https://swiggy-server.netlify.app/api/restaurants?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING`)
 
-const data = await response.json();
-console.log(data,'data')
+// const data = await response.json();
+// console.log(data,'data')
   
-    // const json = await data.json();
-    // console.log(json,'json');
-    setListofRestaurants(
-      data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilteredRestaurants(
-        data?.data.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-      );
+//     // const json = await data.json();
+//     // console.log(json,'json');
+//     setListofRestaurants(
+//       data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+//     );
+//     setFilteredRestaurants(
+//         data?.data.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+//       );
+//     }
+
+const fetchData = async () => {
+  const data = await fetch(
+    "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4491088&lng=78.3565045&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",{
+      mode: 'no-cors'
     }
+  );
+  const json = await data.json();
+  console.log(json,'json');
+  setListofRestaurants(
+    json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+  );
+  setFilteredRestaurants(
+      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+    );
+};
   const onlineStatus = useOnlineStatus();
   if(onlineStatus === false)
   return(
