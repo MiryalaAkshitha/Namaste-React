@@ -26,10 +26,10 @@ console.log(data,'data')
     // const json = await data.json();
     // console.log(json,'json');
     setListofRestaurants(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurants(
-        json?.data.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+        data?.data.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
       );
   
   const onlineStatus = useOnlineStatus();
