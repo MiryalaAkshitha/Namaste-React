@@ -22,7 +22,7 @@ const AvaliabilityRestaurantCard = Avaliability(RestaurantCard)
 
 const data = await response.json();
 console.log(data,'data')
-  }
+  
     // const json = await data.json();
     // console.log(json,'json');
     setListofRestaurants(
@@ -31,7 +31,7 @@ console.log(data,'data')
     setFilteredRestaurants(
         data?.data.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
       );
-  
+    }
   const onlineStatus = useOnlineStatus();
   if(onlineStatus === false)
   return(
